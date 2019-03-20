@@ -1,3 +1,4 @@
+<img src="/figures/logo/TUOS_PRIMARY_LOGO_FULL COLOUR.png" width=300>
 
 
 # Thesis Template 
@@ -26,8 +27,8 @@ The format guidelines (beyond the sections included in the template) are far and
 
 
 ## Disclaimer
+_This summary is provided for convenience and quick access to essential information. The authors take no responsibility for the accuracy of this information and we strongly recommend that you refer to the guidelines provided on the University of Sheffield website (see reference links below) before you start writting your thesis and double-check before you submit_
 
-**_This summary is provided for convenience and quick access to essential information. The authors take no responsibility for the accuracy of this information and we strongly recommend that you refer to the guidelines provided on the University of Sheffield website (see referencec links below) before you start writting your thesis and double-check before you submit_**
 
 ### References
 
