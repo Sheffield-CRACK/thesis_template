@@ -1,7 +1,7 @@
 <img src="/figures/logo/TUOS_PRIMARY_LOGO_FULL COLOUR.png" width=300>
 
 
-# Thesis Template 
+# Thesis Template - Department of Physics and Astronomy
 _Updated: 20 March 2019_
 
 This repository contains a cleaned up thesis template for the use of PhD students at the University of Sheffield. 
