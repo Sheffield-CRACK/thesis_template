@@ -1,14 +1,14 @@
 <img src="/figures/logo/TUOS_PRIMARY_LOGO_FULL COLOUR.png" width=300>
 
 
-# Thesis Template - Department of Physics and Astronomy
+# Thesis Template - Astronomy students
 _Updated: 20 March 2019_
 
-This repository contains a cleaned up thesis template for the use of PhD students at the University of Sheffield. 
+This repository contains a thesis template for the use of PhD students at the University of Sheffield. 
 Official guidelines can be found on the website and summarised below. 
 
 ## Latex template
-The latex template provided here is a cleaned version for the template that has been passed down generations of Astronomy PhD students. 
+The latex template provided here is a cleaned version for the template that has been passed down generations of Astronomy PhD students. Students from other subjects (and other Universities) are welcome to use it if they so wish, although we recommend you check with your supervisor. 
 
 ## Formatting Guidelines
 
