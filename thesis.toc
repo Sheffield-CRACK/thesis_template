@@ -1,2 +1,0 @@
-\contentsline {chapter}{\numberline {1}Template}{1}{chapter.1}
-\contentsline {chapter}{\numberline {A}Appendix}{2}{appendix.A}
