@@ -1,0 +1,63 @@
+% This file defines the thesis title page
+
+% The format is defined by the university, it must include:
+% - The full title of the thesis.
+% - The author's name in full.
+% - The degree for which the thesis is submitted.
+% - The Department in which the work has been carried out.
+% - The date (month and year) of submission.
+
+% Otherwise the exact layout isn't fixed.
+% If you want to include a different logo (e.g. the coat of arms) then that's up to you,
+% there are some examples in the /images directory
+
+% Note the actual title, name and date are defined in the main `thesis.tex` file,
+% right after \begin{document}.
+
+% ~~~~~~~~~~~~~~~~~~~~
+\begin{center}
+    \vspace*{2cm}
+
+    \begin{Huge}
+        \makeatletter
+        \textbf{\@title}
+        \makeatother
+    \end{Huge}
+
+    \vspace*{2.5cm}
+
+    \begin{LARGE}
+        \makeatletter
+        \textbf{\@author}
+        \makeatother
+    \end{LARGE}
+
+    \vspace*{1cm}
+
+    \begin{Large}
+        Department of Physics and Astronomy \\
+        \smallskip
+        The University of Sheffield
+    \end{Large}
+
+    \vspace*{2cm}
+
+    \includegraphics[width=0.5\linewidth]{images/sheffield_newlogo.jpg}
+
+    \vspace*{2cm}
+
+    \begin{large}
+        \textit{A dissertation submitted in candidature for the degree of} \\
+        \textit{Doctor of Philosophy at the University of Sheffield}
+    \end{large}
+
+    \vspace*{1cm}
+
+    \begin{large}
+        \makeatletter
+        \text{\@date}
+        \makeatother
+    \end{large}
+
+    \vfill
+\end{center}

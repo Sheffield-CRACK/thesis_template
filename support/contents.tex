@@ -1,0 +1,80 @@
+% This cocument defines the four contents pages at the start of the thesis:
+% - Table of Contents
+% - List of Figures
+% - List of Tables
+% - List of Acronyms (see `structure/acronyms.tex`)
+
+% We do a few clever things on top of using the default commands (e.g. \tableofcontents)
+% - We use the \chapter* command to make sure the heading is in our chosen colour,
+%   and so you can change it if you'd like (e.g. just "Figures" instead of "List of Figures").
+%   This requires redefining the default names below (note also "title={}" in \printglossary)
+\renewcommand{\contentsname}{}
+\renewcommand{\listfigurename}{}
+\renewcommand{\listtablename}{}
+% - We also add lables and pdfbookmarks, which don't appear by default for non-numbered chapters.
+% - For style we also enforce single spacing so the lines aren't too far apart,
+%   and we disable the hyperlink colours so you can still use the links but it's not all purple.
+
+% ~~~~~~~~~~~~~~~~~~~~
+% CONTENTS
+\chapter*{Contents}
+\label{contents}
+\pdfbookmark[section]{Contents}{contents}
+\vspace{-3.5cm}
+
+\begin{singlespacing}
+{\hypersetup{linkcolor=black}
+\tableofcontents
+}
+\end{singlespacing}
+\clearpage
+
+% ~~~~~~~~~~~~~~~~~~~~
+% FIGURES
+\chapter*{Figures}
+\label{figures}
+\pdfbookmark[section]{Figures}{figures}
+\vspace{-3.5cm}
+
+\begin{singlespacing}
+{\hypersetup{linkcolor=black}
+\listoffigures
+}
+\end{singlespacing}
+\clearpage
+
+% ~~~~~~~~~~~~~~~~~~~~
+% TABLES
+\chapter*{Tables}
+\label{tables}
+\pdfbookmark[section]{Tables}{tables}
+\vspace{-3.5cm}
+
+\begin{singlespacing}
+{\hypersetup{linkcolor=black}
+\listoftables
+}
+\end{singlespacing}
+\clearpage
+
+% ~~~~~~~~~~~~~~~~~~~~
+% ACRONYMS
+\chapter*{Acronyms and Abbreviations}
+\label{acros}
+\pdfbookmark[section]{Acronyms and Abbreviations}{acros}
+\vspace{-3.5cm}
+
+\begingroup
+\let\clearpage\relax\vspace{-12pt}
+\begin{singlespacing}
+\printglossary[title={},
+               type=\acronymtype,
+               style=super,
+               nopostdot,
+               nonumberlist,
+               %nogroupskip,
+               ]
+\end{singlespacing}
+\endgroup
+
+\clearpage

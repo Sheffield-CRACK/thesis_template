@@ -1,0 +1,17 @@
+\makeglossaries{}
+
+% set the length of the glossary description on the acronym page
+\setlength{\glsdescwidth}{0.8\linewidth}
+
+% define \acro commands
+% using \acro will automatically add the full name when first referenced, then use the short version on later calls
+% if you want to force the full name with the acronym in brackets then use \acrofull
+\newcommand{\acro}{\gls}
+\newcommand{\acrofull}{\glsfirst}
+
+% if you want hyperlinks from each reference to the acronym list then comment out this line
+%\glsdisablehyper{} % no hyperlinks
+
+% ~~~~~~~~~~~~~~~~~~~~
+% Add any acronyms below this point:
+\newacronym{goto}{GOTO}{Gravitational-wave Optical Transient Observer}

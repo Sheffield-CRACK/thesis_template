@@ -1,453 +1,124 @@
-%\documentclass[a4paper,12pt]{report}
-%\documentclass[a4paper,12pt,twoside,openright]{report}
+% Sheffield Astronomy PhD Thesis Template
+%
+% This is the main file that produces the output PDF.
+%
+% Almost all of the actual content is split into individual files and subfolders to keep things organised:
+% Chapters:
+% - These files contain the main section of the thesis, including the introduction, conclusion and any appendixes.
+% Images:
+% - This folder is a place to store any images referenced to in the rest of the thesis (see the examples).
+% Support:
+% - These are the various other parts of the thesis, mostly front matter like the title page, summary, declaration etc.
+% - This also includes files for the table of contents, bibliography etc which will be filled out automatically.
+% Structure:
+% - The files in here contain various LaTeX commands and functions, e.g. imported packages and formatting config.
+% - Note below these are loaded using the \input{} command before the document begins, unlike the other pages
+%   which use \include{}.
+
+% ~~~~~~~~~~~~~~~~~~~~
+
+% Document class
+% You'll want to change this based on how you are going to use the PDF:
+% - Use "oneside" whenever producing a digital PDF, for reading or uploading to White Rose / ArXiv
+%   This is the default, you should use when submitting the thesis online
+%   This will prevent the margin and page number alternating between pages, which is annoying when scrolling a PDF
 \documentclass[a4paper,12pt,oneside,openright]{report}
 
+% - Use "twoside" only when printing on actual paper
+%   This will mean that the inner margin is mirrored correctly, so there's more space when its bound
+%\documentclass[a4paper,12pt,twoside,openright]{report}
 
-\usepackage{xcolor,sectsty}%%%%%% to add colors %%%%%
-%\usepackage{titlesec}
-\usepackage{pdfpages}
-\usepackage[nodayofweek]{datetime}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{natbib}
-%\usepackage{psfig}
-\usepackage{fancyhdr}
-%\usepackage{doublespace}
-\usepackage{setspace}
-\usepackage{footnote}
-\usepackage{graphicx}
-\usepackage{epstopdf} %allows use of .eps figures with pdflatex
-\usepackage{lscape}
-\usepackage{rotating}
-\usepackage{subfigure}
-\usepackage{caption}
-\usepackage{wrapfig,lipsum,booktabs}
-\usepackage{afterpage}
-\usepackage{pifont}
-\usepackage{longtable}
-%\usepackage{mathabx}
-\usepackage{latexsym}
-\usepackage{amsfonts}
-\usepackage{verbatim}
-\usepackage[printonlyused]{acronym}
-\usepackage{epigraph}
-%\usepackage{stmaryrd}
-%\usepackage{amssymb}
-%\usepackage{txfonts}
-%\usepackage{pxfonts}
-%\usepackage{wasysym}
-%%\usepackage{aas_macros}
-%\usepackage{aastex_hack}
-%\usepackage{deluxetable}
-\usepackage{pifont}
-%\usepackage{ifsym}
-%\usepackage[lmargin=3.0cm,rmargin=2.3cm,twoside]{geometry}
-\usepackage[lmargin=3.0cm,rmargin=2.3cm]{geometry}
-\usepackage{color}
-\usepackage{url}
-\usepackage{float}
-\usepackage{nicefrac}
-\usepackage[section]{placeins}
-\usepackage{multicol,multirow}
-\usepackage[titletoc]{appendix}
-\usepackage{pdflscape}
+% NOTE: to get the headers formatted correctly for two sided layout go to `structure/format.txt` and uncomment the lines
+% in the headers/footers section
 
-%\usepackage{verbatim}
-%\usepackage{captcont}
-\usepackage{geometry}
-%\usepackage{subfig}
-\usepackage[colorinlistoftodos]{todonotes}
-\usepackage[
-%\hypersetup{
-	pdfauthor={H. F. Stevance},
-	pdftitle={Specpol of CCSNe and WR stars}, 
-%	pdfkeywords={}, 
-	breaklinks=true, 
-	colorlinks   = true, %Colours links instead of ugly boxes
-	urlcolor     = blue, %Colour for external hyperlinks
-	linkcolor    = black, %Colour of internal links
-	citecolor    = blue] %Colour of citations
-	{hyperref}
-%}
-%\usepackage{caption}
-%\usepackage{subcaption}
-\usepackage{afterpage}
+% ~~~~~~~~~~~~~~~~~~~~
 
-\newcommand\blankpage{%
-    \null
-    \thispagestyle{empty}%
-    \addtocounter{page}{-1}%
-    \newpage}
-\newcommand{\tick}{\ding{52}}
-%\newcommand{\blackdiamond}{\ding{117}}
-%\newcommand{\moo}{\rm $\mu$m}
-\newcommand{\comments}[1]{}
+% Preamble structure, split off into separate files so this main file is nice and tidy
 
-%==================================================
-%My Definitions
-%==================================================
+% First import any LaTeX packages to enable extra commands and features
+\input{structure/packages}
+% This file defines the page formats (e.g. margins, headers)
+\input{structure/format}
+% This page defines custom colours so you can make the thesis pretty
+\input{structure/colours}
+% This file defines custom astronomical units for use with the siunitx package
+\input{structure/units}
+% This file defines standard abbreviations for astronomy journals
+\input{structure/journals}
+% This file defines acronyms to be used using the glossaries package
+\input{structure/acronyms}
+% This file defines other custom commands and definitions
+\input{structure/commands}
 
-\DeclareMathOperator{\sech}{sech}
-\newcommand{\Msun}{\ensuremath{\textrm{\,M}_{\odot}}}
-\newcommand{\Lsun}{\ensuremath{\textrm{\,L}_{\odot}}}
-\newcommand{\Mbh}{\ensuremath{\textrm{\,M}_{BH}~}}
-\newcommand{\Mbu}{\ensuremath{\textrm{\,M}_{bulge}~}}
-\newcommand{\rat}{\ensuremath{L/L_{edd}}~}
-\newcommand{\degs}{\ensuremath{^{\circ}}}
-\newcommand{\kms}{\ensuremath{\textrm{\,km s}^{-1}}}
-\newcommand{\nth}{\ensuremath{^{\rm th}}}
-\newcommand{\chisq}{\ensuremath{\chi^{2}_{red}}}
-\newcommand{\chisqlt}{\ensuremath{\chi^{2}_{red} < 1}}
-\newcommand{\ergs}{\ensuremath{\textrm{\,erg s}^{-1}}}
-\newcommand{\microns}{\ensuremath{\mu{\mbox{m}}}}
-\newcommand{\hb}{\ensuremath{\mbox{H}{\beta}}}
-\newcommand{\hg}{\ensuremath{\mbox{H}{\gamma}}}
-\newcommand{\hd}{\ensuremath{\mbox{H}{\delta}}}
-\newcommand{\ha}{\ensuremath{\mbox{H}{\alpha}}}
-\newcommand{\ebv}{E(B--V)}
-\newcommand{\rv}{\ensuremath{\mathrm{R_V}}}
-\newcommand{\ca}{Ca {\sc ii} K}
-\newcommand{\st}{\ensuremath{^{\rm st}}}
-\newcommand{\nd}{\ensuremath{^{\rm nd}}}
-\newcommand{\rd}{\ensuremath{^{\rm rd}}}
-\newcommand{\ew}{\ensuremath{\mathrm{W}_\lambda}}
-\newcommand{\oiii}{\ensuremath{\mathrm{[OIII]}\,88.36\mu\mathrm{m}}}
-\newcommand{\otwop}{\ensuremath{\mathrm{O}^{2+}}}
-\newcommand{\othrp}{\ensuremath{\mathrm{O}^{3+}}}
-\newcommand{\netwop}{\ensuremath{\mathrm{Ne}^{2+}}}
-\newcommand{\nep}{\ensuremath{\mathrm{Ne}^{+}}}
-\newcommand{\stwop}{\ensuremath{\mathrm{S}^{2+}}}
-\newcommand{\sthrp}{\ensuremath{\mathrm{S}^{3+}}}
-
-\newcommand{\ds}{\ensuremath{\mathrm{d}s}}
-\newcommand{\dt}{\ensuremath{\mathrm{d}t}}
-\newcommand{\dx}{\ensuremath{\mathrm{d}x}}
-\newcommand{\dy}{\ensuremath{\mathrm{d}y}}
-\newcommand{\dz}{\ensuremath{\mathrm{d}z}}
-
-\newcommand{\actaa}{Acta Astronomica}
-\newcommand{\apj}{Astrophysical Journal}                                         
-\newcommand{\apjs}{Astrophysical Journal Supplements}
-\newcommand{\aap}{Astronomy and Astrophysics}
-\newcommand{\aaps}{Astronomy and Astrophysics Supplements}
-\newcommand{\mnras}{Monthly Notices of the Royal Astronomical Society}
-\newcommand{\aj}{Astronomical Journal}
-\newcommand{\apss}{Astrophysics and Space Science} 
-\newcommand{\nat}{Nature} 
-\newcommand{\pasp}{Publications of the Astronomical Society of the Pacific}
-\newcommand{\araa}{Annual Review of Astronomy and Astrophysics}
-\newcommand{\aapr}{Astronomy and Astrophysics Review}
-\newcommand{\pasj}{Publications of the Astronomical Society of Japan}
-\newcommand{\apjl}{Astrophysical Journal Letters}
-\newcommand{\rmxaa}{Revista Mexicana de Astronomia y Astrofisica}
-\newcommand{\prd}{Physical Review D}
-\newcommand{\jcap}{Journal of Cosmology and Astroparticle Physics}
-\newcommand{\ssr}{Space Science Reviews}
-\newcommand{\na}{New Astronomy}
-\newcommand{\nar}{New Astronomy Reviews}
-\newcommand{\sex}{SExtractor}
-\newcommand{\zap}{Zeitschrift f{\"u}r Astrophysik}
-
-%%%%% defining my colors %%%%%%%%%
-\definecolor{chapters}{RGB}{60, 112, 216}
-\definecolor{sections}{RGB}{46,116,181} %agoodbluefor titles
-%\definecolor{sections}{RGB}{73, 188, 255}%myblue
-%\definecolor{sections}{RGB}{255,113,91} %myred
-%\definecolor{sections}{RGB}{112, 81, 70} %mybrown
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def \cbat {CBAT}
-\def \aj {AJ}
-\def \mnras {MNRAS}
-\def \pasp {PASP}
-\def \apj {ApJ}
-\def \apjs {ApJS}
-\def \apjl {ApJL}
-\def \aap {A\&A}
-\def \nat {Nature}
-\def \araa {ARAA}
-\def \iaucirc {IAUC}
-\def \aaps {A\&A Suppl.}
-\def \apss {Ap\&SS}
-\def \na {New Astronomy}
-\def \pasa {PASA}
-\def \Msolar {$\mathrm{M_{\sun}}$}
-\newcommand{\msol} {M$_{\odot}$}
-\newcommand{\lsol} {L$_{\odot}$}
-\newcommand{\mza} {M$_{ZAMS}$}
-\newcommand{\zsol} {Z$_{\odot}$}
-\newcommand{\rsol} {R$_{\odot}$}
-\newcommand{\about} {$\sim$}
-\newcommand{\metal}{12 + log(O/H) }
-%\newcommand\ion[2]{#1$\;${\small\rmfamily\@Roman{#2}}}
-%\newcommand\ion[2]{#1$\;${\scshape{#2}}}% 
-\newcommand{\electron} {$\mathrm{e^{-}}$}
-\def\lesssim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
-\def\gtrsim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
-
-\newcommand{\ang} {$\mathrm{\AA}$}
-\newcommand{\degree}{$^{\circ}$}
-%\newcommand{\arcsec}{\mbox{$^{\prime\prime}$}}%
-\newcommand{\deps}{$\Delta \epsilon\,$}
-
-\newcommand{\halpha} {$\mathrm{H\alpha}$ }
-\newcommand{\hbeta} {$\mathrm{H\beta}\,$}
-%\newcommand{\heI5876} {HeI $\lambda 5876$}
-%\newcommand{\heI6678} {HeI $\lambda 6678$}
-%\newcommand{\heI7065} {HeI $\lambda 7065$}
-
-\long\def\symbolfootnote[#1]#2{\begingroup%
-\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup} 
-
-%\captionsetup{width=1.0\textwidth}
-
-%==================================================
-%==================================================
-
-%Here follow the margins for two-sided output.
-%Note - submitted thesis must be single sided.
-
-%\setlength{\oddsidemargin}{14pt}
-%\setlength{\evensidemargin}{14pt}
-%\setlength{\oddsidemargin}{0pt}
-%\setlength{\evensidemargin}{0pt}
-
-
-\setlength{\marginparwidth}{50pt}
-\setlength{\marginparsep}{10pt}
-\setlength{\marginparpush}{5pt}
-
-\setlength{\topmargin}{5pt}
-\setlength{\headheight}{15pt}
-\setlength{\headsep}{25pt}
-
-\setlength{\footskip}{30pt}
-
-\setlength{\textwidth}{\paperwidth}
-\addtolength{\textwidth}{-\marginparsep}
-\addtolength{\textwidth}{-\oddsidemargin}
-\addtolength{\textwidth}{-\marginparwidth}
-\addtolength{\textwidth}{-1in}
-\addtolength{\textwidth}{-1mm}
-\addtolength{\textwidth}{-\hoffset}
-
-\setlength{\textheight}{\paperheight}
-\addtolength{\textheight}{-\topmargin}
-\addtolength{\textheight}{-\headheight}
-\addtolength{\textheight}{-\headsep}
-\addtolength{\textheight}{-\footskip}
-\addtolength{\textheight}{-1in}
-\addtolength{\textheight}{-\voffset}
-\addtolength{\textheight}{-2cm}
-
-\setlength{\columnsep}{10pt}
-\setlength{\columnseprule}{0pt}
-\setlength{\LTcapwidth}{8in} 
-
-
-\title{\textsc{Spectropolarimetry of Core Collapse Supernovae and their progenitors}}
-\author{H. F. Stevance}
-
-%%%%% my stuff %%%%%
-\chapterfont{\color{sections}}
-\sectionfont{\color{sections}}
-\subsectionfont{\color{sections}}
-\subsubsectionfont{\color{sections}}
-
-
-
+% ~~~~~~~~~~~~~~~~~~~~
 
 \begin{document}
 
-%    * Theses Should normally be ISO-A4 in size and no thesis should
-%      exceed 14" x 10". Good quality paper should be used. The
-%      Library copy of the thesis should be single-sided but the other
-%      two copies required for submission may be double-sided provided
-%      that legibility is not impaired.%
+% Basic document info, this is used on the title page and in the PDF metadata
+\title{An Example PhD Thesis in Astronomy}
+\author{Albert N. Example}
+\date{\today}  % replace with your actual submission date (e.g. \date{1st January 2000})
 
-%    * Pages Should be numbered consecutively through the thesis,
-%      including appendices. Students are advised to discuss with
-%      their supervisor whether or not photographs and/or diagrams,
-%      which are not embodied in the text, should be paginated.
+% ~~~~~~~~~~~~~~~~~~~~
 
-%    * Margins At the binding edge should be not less than 40mm and
-%      other margins not less than 20mm. Your work should be
-%      word-processed in 12 point font, with the body of the text (but
-%      not footnotes) double-spaced.
+% Now we have the actual content of the thesis
+% Each section/chapter is split into a separate file to keep things tidy,
+% with the main text in "chapters" and the rest in "support".
+% Different parts of the thesis have different formatting styles, these are defined
+% below before the content files are included.
 
-%______________________________________________________________________________
-% TITLE PAGE
-%The title page of your thesis must show:%
-%
-%    * The full title of the thesis.
-%    * The author's name in full.
-%    * The degree for which the thesis is submitted.
-%    * The Department in which the work has been carried out.
-%    * The date (month and year) of submission.
-
-%==================================================
-% Commented out for writing my thesis - put all this back in!
-%==================================================
-%\begin{comment}
-\thispagestyle{empty}
-
-\begin{center}
-\fontsize{24.88}{57.6}
-\vspace*{-1cm}
-
-\textbf{Your Title}\\
-\vspace*{2.5cm}
-\LARGE
-\text{Name}\\
-\vspace{2cm}
-\Large{Department of Physics \& Astronomy}\\
-\Large{The University of Sheffield}\\
-\vspace*{1cm}
-
-\includegraphics[width=0.4\textwidth]{./figures/logo/tuoslogo2.jpg}\\
-
-\vspace*{1cm}
-
-\large
-{\it A dissertation submitted in candidature for the degree of}\\
-{\it Doctor of Philosophy at the University of Sheffield}\\
-\vspace*{1.5cm}
-{Submission month year}
-\vfill
-\end{center}
+% Cover pages
+% From the start we use Roman numerals (i, ii, etc) until we get to the first chapter.
+% However the very first few pages have no visible page numbers, so we use the "empty" style.
 \pagenumbering{roman}
-%\end{comment}
-\afterpage{\blankpage}
-%==================================================
-%==================================================
+\pagestyle{empty}
+% ---------
+\include{support/titlepage}
+\include{support/quotepage}
+% ---------
 
+% Front matter
+% Now we switch to the "plain" style, which just has a single page number at the bottom of the page.
+% Note these are still Roman numerals.
+\pagestyle{plain}
+% ---------
+\include{support/declaration}
+\include{support/acknowledgements}
+\include{support/summary}
+\include{support/contents}  % contains Contents, Figures, Tables, and Acronyms pages
+% ---------
 
-\normalsize 
+% Main body
+% Now we start the first chapter we can switch to Arabic numerals, which start again from 1.
+% We also switch to the "fancy" style, which is defined in `structure/format.tex`.
+\pagenumbering{arabic}
+\pagestyle{fancy}
+% ---------
+\include{chapters/introduction}
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+% ... <add your chapters here>
+\include{chapters/conclusion}
+% ---------
 
-%%%%%%%%%%%%%%% DECLARATION ACKOWLEDGMENTS AND SUMMARY %%%%%%%%%%%%%%5
+% Bibliography
+% Now we go back to plain style, but continuing with Arabic numerals. 
+\pagestyle{plain}
+% ---------
+\include{support/bibliography}
+% ---------
 
-%==================================================
-% GUIDLINES FOR THE SUMMARY
-%==================================================
-
-
-%By regulation, the summary/abstract (which should be prepared by the
-%candidate in consultation with the supervisor) should not exceed 300
-%words. Each bound copy of the thesis must contain a summary/abstract
-%within it, and a further loose copy should be submitted with the
-%thesis to the Graduate Research Office. 
-
-
-\onehalfspacing
-
-%%%%%%%%%%%% THIS DEFINES A NEW GEOMETRY FOR THE QUOTE PAGE TO LOOK PRETTY %%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FEEL FREE TO DELETE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newgeometry{top=12cm, left=5cm, right=4cm}  
-\vspace{4cm}
-\begin{center}
-{\Huge \noindent \textbf{\textcolor{sections}{``}}}\\
-\vspace{0.6cm}
-{\huge There is no problem so bad that}
-
-{\vspace{0.5cm}\huge you can't make it worse.}\\
-
-{\vspace{0.8cm}\Huge \noindent \textbf{\textcolor{sections}{"}}}\\
-
-\end{center}
-
-{\hspace{7cm}\large --- Chris Hadfield}
-
-\restoregeometry 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\tableofcontents \clearpage
-\listoffigures \clearpage
-\listoftables \clearpage
-
-\include{chapters/declaration}\clearpage
-
-\include{chapters/acknowledgments}\clearpage
-
-\include{chapters/summary}\clearpage
-
-%\include{acronyms} \clearpage
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%______________________________________________________________________________
-
-\pagenumbering{arabic} \setcounter{page}{1}
-\renewcommand{\chaptermark}[1]{\markboth{\bf{ #1}}{}} 
-\renewcommand{\sectionmark}[1]{\markright{\thesection\emph{ #1}}{}} 
-
- \pagestyle{fancy}			 % Sets fancy header and footer
- \fancyfoot{}				 % Delete current footer settings
- \renewcommand{\chaptermark}[1]{	 % Lower Case Chapter marker style in Italics
-   \markright{{\bf\chaptername\ \thechapter.}\ #1}{}} %
- \renewcommand{\sectionmark}[1]{	 % Lower case Section marker style
-   \markright{\thesection.\ #1}}	 %
- \fancyhead[RE,RO]{\bfseries\thepage}	 % Page number (boldface) in left on even
-%   				 	 % pages and right on odd pages
-\fancyhead[LE]{\bfseries\rightmark}	 % Chapter in the right on even pages
-\fancyhead[LO]{\bfseries\rightmark}	 % Section in the left on odd pages in italics
- \renewcommand{\headrulewidth}{0.3pt}	 % Width of head rule
-
-
-%\pagenumbering{arabic} \setcounter{page}{1}  % reset counter - use normal numbering
-
-%\pagestyle{fancy}
-%\fancyfoot{}				 % Delete current footer settings
-%\fancyhead{}
-%
-
-%\renewcommand{\chaptermark}[1]{          %
-%  \markright{\thechapter.\ #1}}
-%\renewcommand{\sectionmark}[1]{	         % Lower case Section marker style
-%   \markright{\thesection.\ #1}}	 
-
-
-%\renewcommand{\chaptermark}[1]{          % Lower Case Chapter marker style in Italics
-%   \markright{\chaptername\ \thechapter.\ #1}}
-
-
-%\fancyhead[RE,RO]{\bfseries\thepage}	 % Page number (boldface) in left on even
-%\fancyhead[LE,LO]{\thechaptername}
-%\include{subtraction}\clearpage 
-
-
-%%%% MAIN TEXT MAIN TEXT MAIN TEXT %%%%%%%
-
-
-\begin{onehalfspace}                                         
-%\begin{doublespace}
-
-
-\chapter{Template}
-\include{chapters/template_chpt}
-
-\citep{example}
-
-\end{onehalfspace}
-%\end{doublespace}
-
-\begin{singlespace}
-
-%%%% BIBLIOGRAPHY BIBLIOGRAPHY BIBLIOGRAPHY BIBLIOGRAPHY%%%%%
-\bibliographystyle{mnras} %requires mnras.bst file in same directory
-
-% YOUR PATH %
-\bibliography{bibliography} 
-
-\end{singlespace}  
-
-%%%%%%%%%%%%%%%% APPENDIX APPENDIX APPENDIX APPENDIX %%%%%%%%%%%%%55
-\onehalfspacing
+% Appendices
+% Back to fancy style for any appendices
+\pagestyle{fancy}
+% We also want to change the formatting so instead of Chapter 5,6... we have Appendix A,B...
+% The \appendix command takes care of all of this, including the headers, table of contents and figure labels.
+% This means you can easily move chapters between the main body and appendixes without having to change
+% anything within the actual chapter file.
 \appendix
-\include{chapters/appendix}\clearpage
+% ---------
+\include{chapters/appendix}
+% ---------
 
-
-
+% And that's it!
 \end{document}

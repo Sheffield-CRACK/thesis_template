@@ -1,0 +1,259 @@
+% This file imports all the LaTex packages used in this document
+% Note this must be the very first input included in the main thesis.tex file, right after the documentclass
+% Some packages include configuration options when they are imported, see hyperref for an example
+
+% ~~~~~~~~~~~~~~~~~~~~
+% CORE PACKAGES
+
+% Standard package for selecting font encodings
+% https://ctan.org/pkg/fontenc
+\usepackage[T1]{fontenc}
+
+% Language support
+% https://ctan.org/pkg/babel
+\usepackage[UKenglish]{babel}
+
+% Tune the output format of dates according to language
+% https://ctan.org/pkg/isodate
+\usepackage[UKenglish]{isodate}
+
+% Enhanced support for graphics
+% https://ctan.org/pkg/graphicx
+\usepackage{graphicx}
+%\usepackage[draft]{graphicx}
+% NOTE: you can use the [draft] option to hide figures, handy to reduce file size (e.g. for Turnitin)
+
+% Driver-independent colour extensions
+% https://ctan.org/pkg/xcolor
+\usepackage[dvipsnames]{xcolor}
+
+% Selective filtering of error messages and warnings
+% https://ctan.org/pkg/silence
+\usepackage{silence}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% PAGE FORMATTING
+
+% Flexible and complete interface to document dimensions
+% https://ctan.org/pkg/geometry
+\usepackage[lmargin=3.0cm,rmargin=2.3cm]{geometry}
+
+% Draw a page-layout diagram
+% https://ctan.org/pkg/showframe
+%\usepackage{showframe}
+%\renewcommand*\ShowFrameColor{\color{red!10}}
+% NOTE: this is useful if you are having issues with margins, just uncomment the above two lines
+
+% Intermix single and multiple columns
+% https://ctan.org/pkg/multicol
+\usepackage{multicol}
+
+% Set space between lines
+% https://ctan.org/pkg/setspace
+\usepackage{setspace}
+
+% Control page headers and footers
+% https://ctan.org/pkg/fancyhdr
+\usepackage{fancyhdr}
+
+% A range of footnote options
+% https://ctan.org/pkg/footmisc
+\usepackage{footmisc}
+
+% Select alternative section titles
+% https://ctan.org/pkg/titlesec
+\usepackage{titlesec,titletoc}
+
+% Add epigraphs (quotes at the start of chapters)
+% https://ctan.org/pkg/epigraph
+\usepackage{epigraph}
+
+% Insert whole PDF documents with the \includepdf command
+% https://ctan.org/pkg/pdfpages
+\usepackage{pdfpages}
+
+% Make a page landscape orientated
+% https://ctan.org/pkg/pdflscape
+\usepackage{pdflscape}
+
+% Execute command after the next page break
+% https://ctan.org/pkg/afterpage
+\usepackage{afterpage}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% TEXT FORMATTING
+
+% Format headers (e.g. \sectionfont)
+% https://ctan.org/pkg/sectsty
+\usepackage{sectsty}
+
+% Format hyperlinks (\href, \url)
+% https://ctan.org/pkg/hyperref
+\usepackage[unicode,
+			breaklinks=true,  % Allow links to break over lines
+			colorlinks=true,  % Colours links instead of the default boxes
+            % Link colours
+			linkcolor=SheffieldPurple,  % Colour of internal links (see colours.txt for definition)
+			urlcolor=SheffieldPurple,  % Colour of external hyperlinks
+			citecolor=SheffieldPurple,  % Colour of citations
+			% PDF metadata
+			pdfusetitle,      % Gets PDF metadata from \author and \title
+			pdfsubject={PhD Thesis},
+			pdfkeywords={astronomy}
+			]{hyperref}
+
+% A new bookmark (outline) organization for hyperref
+% https://ctan.org/pkg/bookmark
+\usepackage{bookmark}
+
+% Make reference to section names, etc
+% https://ctan.org/pkg/nameref
+\usepackage{nameref}
+
+% Context sensitive quotation facilities
+% https://ctan.org/pkg/csquotes
+\usepackage{csquotes}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% SECTIONS
+
+% Flexible bibliography support
+% https://ctan.org/pkg/natbib
+\usepackage{natbib}
+
+% Extra control of appendices
+% https://ctan.org/pkg/appendix
+\usepackage[titletoc]{appendix}
+
+% Control table of contents, figures, etc
+% https://ctan.org/pkg/tocloft
+\usepackage{tocloft}
+
+% Create glossaries and lists of acronyms
+% https://ctan.org/pkg/glossaries
+\usepackage[acronym,shortcuts]{glossaries}
+
+% Produce a table of contents for each chapter, part or section
+% https://ctan.org/pkg/minitoc
+\usepackage{minitoc}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% FIGURES
+
+% Improved interface for floating objects (figures, tables etc)
+% https://ctan.org/pkg/float
+\usepackage{float}
+
+% Extending the array and tabular environments
+% https://ctan.org/pkg/array
+\usepackage{array}
+
+% Customising captions in floating environments
+% https://ctan.org/pkg/caption
+%\WarningFilter{caption}{\caption}
+\usepackage[style=base, labelfont={bf, color=SheffieldPurple}]{caption}
+
+% Retain float number across several floats
+% https://ctan.org/pkg/captcont
+%\usepackage{captcont}
+
+% Control float placement
+% https://ctan.org/pkg/placeins
+\usepackage[section]{placeins}
+
+% Rotation tools, including rotated full-page floats
+% https://ctan.org/pkg/rotating
+\usepackage{rotating}
+
+% Rotate floats, i.e. combining the rotating and float packages
+% https://ctan.org/pkg/rotfloat
+\usepackage{rotfloat}
+
+% Permit footnotes in tables (with \tablefootnote{})
+% https://ctan.org/pkg/tablefootnote
+\usepackage{tablefootnote}
+
+% Produces figures which text can flow around
+% https://ctan.org/pkg/wrapfig
+\usepackage{wrapfig}
+
+% Publication quality tables in LaTeX
+% https://ctan.org/pkg/booktabs
+\usepackage{booktabs}
+
+% Allow tables to flow over page boundaries
+% https://ctan.org/pkg/longtable
+\usepackage{longtable}
+
+% Create tabular cells spanning multiple rows
+% https://ctan.org/pkg/multirow
+\usepackage{multirow}
+
+% Tabular column heads and multi-lined cells
+% https://ctan.org/pkg/makecell
+\usepackage{makecell}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% SCIENTIFIC
+
+% AMS mathematical facilities
+% https://ctan.org/pkg/amsmath
+\usepackage{amsmath,amssymb,amsthm}
+
+% Comprehensive SI units and number formatting (e.g. \SI{9.81}{\meter\per\second\squared})
+% https://ctan.org/pkg/siunitx
+\usepackage{siunitx}
+\sisetup{separate-uncertainty}  % see https://tex.stackexchange.com/questions/409323/aligning-sign-in-table
+
+% Typeset in-line fractions in a "nice" way
+% https://ctan.org/pkg/nicefrac
+\usepackage{nicefrac}
+
+% Typeset source code listings
+% https://ctan.org/pkg/listings
+\usepackage{listings}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% SYMBOLS
+
+% Access to PostScript standard Symbol and Dingbats fonts
+% https://ctan.org/pkg/pifont
+\usepackage{pifont}
+
+% St Mary Road symbols for theoretical computer science
+% https://ctan.org/pkg/stmaryrd
+\usepackage{stmaryrd}
+
+% Martin Vogel's Symbols (contains astronomical/astrological icons)
+% https://ctan.org/pkg/marvosym
+\usepackage{marvosym}
+
+% Split-level fractions (for small in-text fractions, use \sfrac{1}{2})
+% https://ctan.org/pkg/xfrac
+\usepackage{xfrac}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% MISCELLANEOUS
+% Add \verbatim and \comment environments
+% https://ctan.org/pkg/verbatim
+\usepackage{verbatim}
+
+% Formats for dates, times and time zones
+% https://ctan.org/pkg/datetime2
+\usepackage{datetime2}
+
+% Easy access to the Lorem Ipsum dummy text (\lipsum)
+% https://ctan.org/pkg/lipsum
+\usepackage{lipsum}
+
+% Mark things to do
+% https://ctan.org/pkg/todonotes
+%\usepackage[textsize=footnotesize]{todonotes}
+
+% Extended conditional commands
+% https://ctan.org/pkg/xifthen
+\usepackage{xifthen}
+
+% Extending etoolbox patching commands
+% https://ctan.org/pkg/xpatch
+\usepackage{xpatch}

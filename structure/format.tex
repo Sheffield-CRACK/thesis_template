@@ -1,0 +1,71 @@
+% This file holds various formatting definitions
+
+% ~~~~~~~~~~~~~~~~~~~~
+% MARGINS
+% best not to touch these...
+\setlength{\marginparwidth}{50pt}
+\setlength{\marginparsep}{10pt}
+\setlength{\marginparpush}{5pt}
+\setlength{\topmargin}{5pt}
+\setlength{\headheight}{15pt}
+\setlength{\headsep}{25pt}
+\setlength{\footskip}{30pt}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-\marginparsep}
+\addtolength{\textwidth}{-\oddsidemargin}
+\addtolength{\textwidth}{-\marginparwidth}
+\addtolength{\textwidth}{-1in}
+\addtolength{\textwidth}{-1mm}
+\addtolength{\textwidth}{-\hoffset}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-\topmargin}
+\addtolength{\textheight}{-\headheight}
+\addtolength{\textheight}{-\headsep}
+\addtolength{\textheight}{-\footskip}
+\addtolength{\textheight}{-1in}
+\addtolength{\textheight}{-\voffset}
+\addtolength{\textheight}{-2cm}
+\setlength{\columnsep}{10pt}
+\setlength{\columnseprule}{0pt}
+\setlength{\LTcapwidth}{8in}
+
+% ~~~~~~~~~~~~~~~~~~~~
+% LINE SPACING
+% a thesis is usually double spaced throughout, it makes it easier to add comments
+% though you could use 1.5 spacing if you'd like
+\doublespacing
+%\onehalfspacing
+
+% ~~~~~~~~~~~~~~~~~~~~
+% HEADINGS
+% here we set the text colours for headings (see colours.txt for definition)
+\chapterfont{\color{SheffieldPurple}}
+\sectionfont{\color{SheffieldPurple}}
+\subsectionfont{\color{SheffieldPurple}}
+\subsubsectionfont{\color{SheffieldPurple}}
+% We also clear the default lables for the contents sections, so we can chose our own (see support\contents.tex)
+
+% ~~~~~~~~~~~~~~~~~~~~
+% HEADERS & FOOTERS
+% there are three page formats we use throughout the document:
+% - \pagestyle{empty} - no headers or footers (e.g. the title page)
+% - \pagestyle{plain} - no header, page number centred in the footer (front/back sections e.g. contents, bibliography)
+% - \pagestyle{fancy} - chapter/section names in the header, no footer (normal pages i.e. most of the thesis)
+% you can see we swap between them in the main thesis.tex file
+
+% here we define the "fancy" format used for most of the content pages
+% first overwrite the default commands, because they are ugly
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+% ---------
+% for onepage formatting (the default) uncomment these two lines, and comment out the three below:
+\fancyhead[L]{\chaptername\ \thechapter: \leftmark}
+\fancyhead[R]{\textbf{\thepage}}
+% ---------
+% for twopage formatting (when printing) uncomment these three lines, and comment out the two above:
+%\fancyhead[LE, RO]{\textbf{\thepage}}
+%\makeatletter\fancyhead[RE]{\@chapapp\ \thechapter: \leftmark}\makeatother
+%\fancyhead[LO]{Section \thesection: \rightmark}
+% ---------
+% in both one and two page modes the fotter is just blank
+\fancyfoot{}

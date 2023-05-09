@@ -1,0 +1,96 @@
+% This file holds various LaTeX commands and definitions
+
+% icons & symbols
+\newcommand{\tick}{\ding{52}}
+\newcommand{\uptriangle}{\ding{115}}
+\newcommand{\backarrow}{\rotatebox[origin=c]{180}{\ding{252}}}
+\newcommand{\blackdiamond}{\ding{117}}
+\newcommand{\about}{\ensuremath{\sim}}
+\newcommand{\done}{\textcolor{green}{~\tick~}}
+
+% scientific symbols
+\newcommand{\elec}{\ensuremath{\textup{e}^-}}
+
+% superscripts
+\newcommand{\st}{\ensuremath{^{\rm st}}}
+\newcommand{\nd}{\ensuremath{^{\rm nd}}}
+\newcommand{\rd}{\ensuremath{^{\rm rd}}}
+\newcommand{\nth}{\ensuremath{^{\rm th}}}
+
+
+% easy references to the basic properties for the titlepage
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+% reference functions containing the type, also name
+\AtBeginDocument{%
+    \renewcommand\chapterautorefname{Chapter}%
+    \renewcommand\sectionautorefname{Section}%
+    \renewcommand\subsectionautorefname{Section}%
+}
+\newcommand\aref[1]{\autoref{#1}}
+\newcommand\nref[1]{\autoref{#1} (\nameref{#1})}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\Msun}{\ensuremath{\textrm{\,M}_{\odot}}}
+\newcommand{\Lsun}{\ensuremath{\textrm{\,L}_{\odot}}}
+\newcommand{\Mbh}{\ensuremath{\textrm{\,M}_{BH}~}}
+\newcommand{\Mbu}{\ensuremath{\textrm{\,M}_{bulge}~}}
+\newcommand{\rat}{\ensuremath{L/L_{edd}}~}
+\newcommand{\degs}{\ensuremath{^{\circ}}}
+\newcommand{\kms}{\ensuremath{\textrm{\,km s}^{-1}}}
+\newcommand{\chisq}{\ensuremath{\chi^{2}_{red}}}
+\newcommand{\chisqlt}{\ensuremath{\chi^{2}_{red} < 1}}
+\newcommand{\ergs}{\ensuremath{\textrm{\,erg s}^{-1}}}
+\newcommand{\microns}{\ensuremath{\mu{\mbox{m}}}}
+\newcommand{\hb}{\ensuremath{\mbox{H}{\beta}}}
+\newcommand{\hg}{\ensuremath{\mbox{H}{\gamma}}}
+\newcommand{\hd}{\ensuremath{\mbox{H}{\delta}}}
+\newcommand{\ha}{\ensuremath{\mbox{H}{\alpha}}}
+\newcommand{\ebv}{E(B--V)}
+\newcommand{\rv}{\ensuremath{\mathrm{R_V}}}
+\newcommand{\ca}{Ca {\sc ii} K}
+\newcommand{\ew}{\ensuremath{\mathrm{W}_\lambda}}
+\newcommand{\oiii}{\ensuremath{\mathrm{[OIII]}\,88.36\mu\mathrm{m}}}
+\newcommand{\otwop}{\ensuremath{\mathrm{O}^{2+}}}
+\newcommand{\othrp}{\ensuremath{\mathrm{O}^{3+}}}
+\newcommand{\netwop}{\ensuremath{\mathrm{Ne}^{2+}}}
+\newcommand{\nep}{\ensuremath{\mathrm{Ne}^{+}}}
+\newcommand{\stwop}{\ensuremath{\mathrm{S}^{2+}}}
+\newcommand{\sthrp}{\ensuremath{\mathrm{S}^{3+}}}
+
+\newcommand{\ds}{\ensuremath{\mathrm{d}s}}
+\newcommand{\dt}{\ensuremath{\mathrm{d}t}}
+\newcommand{\dx}{\ensuremath{\mathrm{d}x}}
+\newcommand{\dy}{\ensuremath{\mathrm{d}y}}
+\newcommand{\dz}{\ensuremath{\mathrm{d}z}}
+
+\newcommand{\msol} {M$_{\odot}$}
+\newcommand{\lsol} {L$_{\odot}$}
+\newcommand{\mza} {M$_{ZAMS}$}
+\newcommand{\zsol} {Z$_{\odot}$}
+\newcommand{\rsol} {R$_{\odot}$}
+\newcommand{\metal}{12 + log(O/H) }
+%\newcommand\ion[2]{#1$\;${\small\rmfamily\@Roman{#2}}}
+%\newcommand\ion[2]{#1$\;${\scshape{#2}}}% 
+\newcommand{\electron} {$\mathrm{e^{-}}$}
+\def\lesssim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
+\def\gtrsim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
+
+\newcommand{\degree}{$^{\circ}$}
+%\newcommand{\arcsec}{\mbox{$^{\prime\prime}$}}%
+\newcommand{\deps}{$\Delta \epsilon\,$}
+
+\newcommand{\halpha} {$\mathrm{H\alpha}$ }
+\newcommand{\hbeta} {$\mathrm{H\beta}\,$}
+%\newcommand{\heI5876} {HeI $\lambda 5876$}
+%\newcommand{\heI6678} {HeI $\lambda 6678$}
+%\newcommand{\heI7065} {HeI $\lambda 7065$}
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup} 
+
