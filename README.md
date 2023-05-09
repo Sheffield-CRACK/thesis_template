@@ -5,6 +5,8 @@ This repository contains a thesis template for the use of PhD astronomy students
 ## LaTeX template
 The LaTeX template provided here is a cleaned version of the files that have been passed down generations of Astronomy PhD students. Students from other subjects (and other Universities) are welcome to use it if they so wish, although we recommend you check with your supervisor. 
 
+For the Overleaf version of this template see: https://www.overleaf.com/read/mjqgkxchtrvb
+
 ## Formatting Guidelines
 
 The format guidelines (beyond the sections included in the template) are far and few between. There are two you need to bear in mind:
